@@ -35,7 +35,7 @@ public class ListDemo implements Iterable<Integer> {
                 iterator.add("sample");
                 iterator.previous();
                 iterator.previous();
-                iterator.rem
+                iterator.remove();
             }
             System.out.println("iterator.nextIndex(): " + iterator.nextIndex() + ", iterator.next(): " + iterator.next());
 
