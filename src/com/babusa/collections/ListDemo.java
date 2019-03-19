@@ -98,7 +98,7 @@ public class ListDemo {
                 try {
                     list1.remove(Integer.valueOf(element));
                 } catch (Exception e) {
-                    System.out.println("Exception: To accomplish looping and modify, use iterators");
+                    System.out.println("Exception: To accomplish removing of elements during iteration > use iterators");
 //                    e.printStackTrace();
                 }
             }
