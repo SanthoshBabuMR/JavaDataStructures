@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ListDemo implements Iterable<Integer> {
 
@@ -126,9 +127,41 @@ public class ListDemo implements Iterable<Integer> {
             item = iterator.next();
             System.out.println(" element: "+item);
             if(item == 9) {
+                System.out.println("remove element 9");
                 iterator.remove();
+                System.out.println("forEachRemaining start");
+                iterator.forEachRemaining(Filter::add);
+                System.out.println("forEachRemaining end");
             }
         }
         System.out.println("list1: " + list1);
+
+//        list1.forEach(System.out::println);
+//        list1.forEach(Filter::filter);
+//        list1.forEach(new Filter()); // requires implementing Consumer
+
+        // forEachRemaining:
+        // iterator.forEachRemaining(Filter::add);
+
+
+    }
+}
+
+class Filter implements Consumer {
+    static void filter(Integer i) {
+        if(i == 1) {
+            System.out.println(i);
+        }
+    }
+
+    public void accept(Object i) {
+        if((int)i == 1) {
+            System.out.println(i);
+        }
+    }
+
+    static void add(Integer i) {
+        System.out.println("Filter:add");
+        System.out.println(i + 100);
     }
 }
