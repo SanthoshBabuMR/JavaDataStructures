@@ -114,12 +114,12 @@ public class ListDemo {
         System.out.println("\nInsider iteratorDemo ...");
         System.out.println("list1: " + list1);
         Iterator<Integer> iterator = list1.iterator();
-        Integer item;
+        int item;
         System.out.println("Remove item while looping using iterator ");
         while(iterator.hasNext()) {
             item = iterator.next();
             System.out.println(item);
-            if(item.equals(9)) {
+            if(item == 9) {
                 iterator.remove();
             }
         }
