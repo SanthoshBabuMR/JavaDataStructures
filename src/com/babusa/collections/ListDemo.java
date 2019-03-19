@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ListDemo {
+public class ListDemo implements Iterable<Integer> {
+
+    public Iterator<Integer> iterator() {
+        return new ArrayList().iterator();
+    }
+
     public static void main(String[] args) {
         List<Integer> list1 = arrayListDemo();
         iteratorDemo(list1);
@@ -97,6 +102,7 @@ public class ListDemo {
 //        System.out.println("modifying elements while looping");
 //        try {
 //            for(int element: list1) {
+//            // for(int element: new ListDemo()) {
 //                System.out.println("element: " + element);
 //                // Generates ConcurrentModificationException:
 //                if (element == 9) {
@@ -118,7 +124,7 @@ public class ListDemo {
         System.out.println("Remove item while looping using iterator ");
         while(iterator.hasNext()) {
             item = iterator.next();
-            System.out.println(item);
+            System.out.println(" element: "+item);
             if(item == 9) {
                 iterator.remove();
             }
