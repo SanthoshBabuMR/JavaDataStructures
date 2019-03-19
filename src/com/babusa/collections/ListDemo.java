@@ -2,10 +2,16 @@ package com.babusa.collections;
 
 import java.util.Collection;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ListDemo {
     public static void main(String[] args) {
+        List<Integer> list1 = arrayListDemo();
+        iteratorDemo(list1);
+    }
+    public static List<Integer> arrayListDemo() {
+        System.out.println("\nInsider arrayListDemo ...");
 //        Collection<Integer> list1 = new ArrayList<Integer>();
 //        list1.add(1);
 //        list1.add(2);
@@ -88,21 +94,35 @@ public class ListDemo {
 //            e.printStackTrace();
         }
 
-        System.out.println("looping");
-        for(int element: list1) {
-            System.out.println("element: " + element);
+//        System.out.println("modifying elements while looping");
+//        try {
+//            for(int element: list1) {
+//                System.out.println("element: " + element);
+//                // Generates ConcurrentModificationException:
+//                if (element == 9) {
+//                    list1.remove(Integer.valueOf(element));
+//                }
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Exception: To accomplish removing of elements during iteration > use iterators");
+//            // e.printStackTrace();
+//        }
+        return list1;
+    }
 
-            // Generates ConcurrentModificationException:
-
-            if (element == 9) {
-                try {
-                    list1.remove(Integer.valueOf(element));
-                } catch (Exception e) {
-                    System.out.println("Exception: To accomplish removing of elements during iteration > use iterators");
-//                    e.printStackTrace();
-                }
+    public static void iteratorDemo(List list1) {
+        System.out.println("\nInsider iteratorDemo ...");
+        System.out.println("list1: " + list1);
+        Iterator<Integer> iterator = list1.iterator();
+        Integer item;
+        System.out.println("Remove item while looping using iterator ");
+        while(iterator.hasNext()) {
+            item = iterator.next();
+            System.out.println(item);
+            if(item.equals(9)) {
+                iterator.remove();
             }
         }
-
+        System.out.println("list1: " + list1);
     }
 }
