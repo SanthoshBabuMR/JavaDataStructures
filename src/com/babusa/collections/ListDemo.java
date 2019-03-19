@@ -12,8 +12,8 @@ public class ListDemo implements Iterable<Integer> {
     }
 
     public static void main(String[] args) {
-//        List<Integer> list1 = arrayListDemo();
-//        iteratorDemo(list1);
+        List<Integer> list1 = arrayListDemo();
+        iteratorDemo(list1);
         listIteratorDemo();
     }
 
@@ -35,7 +35,7 @@ public class ListDemo implements Iterable<Integer> {
                 iterator.add("sample");
                 iterator.previous();
                 iterator.previous();
-                iterator.remove();
+                iterator.rem
             }
             System.out.println("iterator.nextIndex(): " + iterator.nextIndex() + ", iterator.next(): " + iterator.next());
 
