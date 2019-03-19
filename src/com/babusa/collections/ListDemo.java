@@ -56,8 +56,47 @@ public class ListDemo {
         System.out.println("list1.indexOf(1): " + list1.indexOf(1));
         System.out.println("list1.lastIndexOf(1): " + list1.lastIndexOf(1));
 
+        // Range
+        System.out.println("Range: subList");
+        List<Integer> list3 = list1.subList(2, 3);
+        System.out.println("list1: " + list1);
+        System.out.println("list3: " + list3);
+//
+//        System.out.println("Range: subList: set");
+//        list3.set(0, 6);
+//        System.out.println("list1: " + list1);
+//        System.out.println("list3: " + list3);
+//
+//        System.out.println("Range: subList: add");
+//        list3.add(0, 7);
+//        System.out.println("list1: " + list1);
+//        System.out.println("list3: " + list3);
+
+//        System.out.println("Range: subList: removeAll");
+//        list3.removeAll(list1);
+//        System.out.println("list1: " + list1);
+//        System.out.println("list3: " + list3);
 
 
+        try {
+            System.out.println("Range: subList: make changes in src list");
+            list1.add(0, 8);
+            System.out.println("list1: " + list1);
+            System.out.println(list3);
+        } catch (Exception e) {
+            System.out.println("Exception: Structural changes (add/remove items) to src list would result in java.util.ConcurrentModificationException exception when accessing the sublist element");
+//            e.printStackTrace();
+        }
+
+        System.out.println("looping");
+        for(int element: list1) {
+            System.out.println("element: " + element);
+
+            // Generates ConcurrentModificationException
+            if (element == 9) {
+                list1.remove(Integer.valueOf(element));
+            }
+        }
 
     }
 }
