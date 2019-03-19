@@ -1,9 +1,8 @@
 package com.babusa.collections;
 
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import jdk.swing.interop.SwingInterOpUtils;
+
+import java.util.*;
 import java.util.function.Consumer;
 
 public class ListDemo implements Iterable<Integer> {
@@ -13,9 +12,42 @@ public class ListDemo implements Iterable<Integer> {
     }
 
     public static void main(String[] args) {
-        List<Integer> list1 = arrayListDemo();
-        iteratorDemo(list1);
+//        List<Integer> list1 = arrayListDemo();
+//        iteratorDemo(list1);
+        listIteratorDemo();
     }
+
+    static void listIteratorDemo() {
+        List<String> list = new ArrayList<String>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+
+        for(ListIterator<String> iterator = list.listIterator(); iterator.hasNext();) {
+            System.out.println("iterator.nextIndex(): " + iterator.nextIndex() + ", iterator.next(): " + iterator.next());
+        }
+
+        System.out.println("\n");
+        ListIterator<String> iterator = list.listIterator();
+        for(; iterator.hasNext();) {
+            if (iterator.nextIndex() == 1) {
+                iterator.add("test");
+                iterator.add("sample");
+                iterator.previous();
+                iterator.previous();
+                iterator.remove();
+            }
+            System.out.println("iterator.nextIndex(): " + iterator.nextIndex() + ", iterator.next(): " + iterator.next());
+
+        }
+
+        System.out.println("\n");
+        for(; iterator.hasPrevious();) {
+            System.out.println("iterator.previousIndex(): " + iterator.previousIndex() + ", iterator.previous(): " + iterator.previous());
+        }
+
+    }
+
     public static List<Integer> arrayListDemo() {
         System.out.println("\nInsider arrayListDemo ...");
 //        Collection<Integer> list1 = new ArrayList<Integer>();
@@ -100,20 +132,21 @@ public class ListDemo implements Iterable<Integer> {
 //            e.printStackTrace();
         }
 
-//        System.out.println("modifying elements while looping");
-//        try {
-//            for(int element: list1) {
-//            // for(int element: new ListDemo()) {
-//                System.out.println("element: " + element);
-//                // Generates ConcurrentModificationException:
-//                if (element == 9) {
+        System.out.println("modifying elements while looping");
+        try {
+            for(int element: list1) {
+            // for(int element: new ListDemo()) {
+                System.out.println("element: " + element + " >>");
+                // Generates ConcurrentModificationException:
+                if (element == 1) {
 //                    list1.remove(Integer.valueOf(element));
-//                }
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Exception: To accomplish removing of elements during iteration > use iterators");
-//            // e.printStackTrace();
-//        }
+                    list1.add(100);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Exception: To accomplish removing of elements during iteration > use iterators");
+            // e.printStackTrace();
+        }
         return list1;
     }
 
