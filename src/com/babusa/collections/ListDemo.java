@@ -92,9 +92,15 @@ public class ListDemo {
         for(int element: list1) {
             System.out.println("element: " + element);
 
-            // Generates ConcurrentModificationException
+            // Generates ConcurrentModificationException:
+
             if (element == 9) {
-                list1.remove(Integer.valueOf(element));
+                try {
+                    list1.remove(Integer.valueOf(element));
+                } catch (Exception e) {
+                    System.out.println("Exception: To accomplish looping and modify, use iterators");
+//                    e.printStackTrace();
+                }
             }
         }
 
