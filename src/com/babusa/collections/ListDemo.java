@@ -12,13 +12,13 @@ public class ListDemo implements Iterable<Integer> {
     }
 
     public static void main(String[] args) {
-        List<Integer> list1 = arrayListDemo();
-        iteratorDemo(list1);
+//        List<Integer> list1 = arrayListDemo();
+//        iteratorDemo(list1);
         listIteratorDemo();
     }
 
     static void listIteratorDemo() {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new LinkedList<>();
         list.add("a");
         list.add("b");
         list.add("c");
@@ -38,8 +38,10 @@ public class ListDemo implements Iterable<Integer> {
                 iterator.remove();
             }
             System.out.println("iterator.nextIndex(): " + iterator.nextIndex() + ", iterator.next(): " + iterator.next());
-
         }
+
+        System.out.println(iterator.previousIndex());
+        System.out.println(iterator.previousIndex());
 
         System.out.println("\n");
         for(; iterator.hasPrevious();) {
