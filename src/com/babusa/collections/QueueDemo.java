@@ -2,6 +2,7 @@ package com.babusa.collections;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 public class QueueDemo  {
 
@@ -10,6 +11,7 @@ public class QueueDemo  {
 
         // Queue - FIFO
         Deque<String> deque = new ArrayDeque<String>();
+//        Deque<String> deque = new LinkedList<>();
         deque.add("walden");
         deque.add("harry potter");
         deque.add("head first java");
